@@ -5,7 +5,7 @@ import { mdiPlusCircleOutline } from '@mdi/js';
 
 const ItemInput = () => {
   const [newTask, setNewTask] = useState('')
-  const {addTask, taskEdit} = useContext(TaskContext)
+  const {addTask, taskEdit, updateTask} = useContext(TaskContext)
 
   useEffect(() => {
     if(taskEdit.edit === true) {
@@ -16,15 +16,19 @@ const ItemInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addTask(newTask)
+    if(taskEdit.edit === true) {
+      updateTask(taskEdit.task.id, newTask)
+    } else {
+      addTask(newTask)
+    }
     setNewTask('')
   }  
   return (
     <form className="flex flex-row justify-center mt-20 mb-12" onSubmit={handleSubmit}>
       <div className="form-control">
-          <input type="text" placeholder="Add a task..." name="add-item" id="add-item" className="item-input input input-bordered text-white" onChange={(e) => setNewTask(e.target.value)} value={newTask} />
+          <input type="text" placeholder="Add a task..." name="add-item" id="add-item" className="item-input input input-bordered text-white ml-10 md:ml-0 md:w-96" onChange={(e) => setNewTask(e.target.value)} value={newTask} />
       </div>
-      <button type='submit' className="btn btn-square ml-2">
+      <button type='submit' className="btn btn-square ml-2 mr-10 md:mr-0">
           <Icon path={mdiPlusCircleOutline} size={1} />
       </button>
     </form>

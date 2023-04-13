@@ -4,7 +4,8 @@ export const TaskContext = createContext({
     tasks: [],
     addTask: () => {},
     deleteTask: () => {}, 
-    editTask: () => {}
+    editTask: () => {},
+    updateTask: () => {}
 })
 
 export const TaskProvider = ({children}) => {
@@ -30,17 +31,21 @@ export const TaskProvider = ({children}) => {
             task,
             edit: true
         })
-        // const selectedTask = tasks.find(task => task.id === id)
-        // console.log(selectedTask.name)
-        // return selectedTask.name
+    }
+
+    // Update task in Edit mode
+    const updateTask = (id, updatedTask) => {
+        setTasks(tasks.map((task) => task.id === id ? {...task, name: updatedTask} : task))
+        console.log(id, updatedTask)
     }
 
     const contextValue = {
         tasks,
+        taskEdit,
         addTask,
         deleteTask, 
         editTask,
-        taskEdit
+        updateTask
     }
 
     return (
