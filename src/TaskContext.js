@@ -9,29 +9,38 @@ export const TaskContext = createContext({
 
 export const TaskProvider = ({children}) => {
     const [tasks, setTasks] = useState([])
-    const [editing, setEditing] = useState(false)
+    const [taskEdit, setTaskEdit] = useState({
+        item: {},
+        edit: false
+    })
 
-
+    // Add a task
     const addTask = (task) => {
         setTasks([...tasks, {id: crypto.randomUUID(), name: task}])
     }
 
+    // Delete task
     const deleteTask = (id) => {
         setTasks(tasks.filter((task) => task.id !== id))
     }
 
-    const editTask = (id) => {
-        setEditing(true)
-        const selectedTask = tasks.find(task => task.id === id)
-        console.log(selectedTask.name)
-        return selectedTask.name
+    // Set task to be updated
+    const editTask = (task) => {
+        setTaskEdit({
+            task,
+            edit: true
+        })
+        // const selectedTask = tasks.find(task => task.id === id)
+        // console.log(selectedTask.name)
+        // return selectedTask.name
     }
 
     const contextValue = {
         tasks,
         addTask,
         deleteTask, 
-        editTask
+        editTask,
+        taskEdit
     }
 
     return (

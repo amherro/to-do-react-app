@@ -3,12 +3,12 @@ import { useContext } from 'react';
 import Task from './Task'
 
 const Tasks = () => {
-    const taskContext = useContext(TaskContext)
-    const taskList = taskContext.tasks
+    const {tasks} = useContext(TaskContext)
+
   return (
     <>
-        {taskList.map((task) => {
-            return <Task key={task.id} id={task.id} name={task.name} />
+        {tasks.map((task) => {
+            return <Task key={task.id} task={task} />
         })}
     </>
   )
