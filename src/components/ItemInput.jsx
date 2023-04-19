@@ -24,11 +24,11 @@ const ItemInput = () => {
     setNewTask('')
   }  
   return (
-    <form className="flex flex-row justify-center mt-20 mb-12" onSubmit={handleSubmit}>
+    <form className="flex flex-col md:flex-row justify-center mt-20 mb-12 items-center" onSubmit={handleSubmit}>
       <div className="form-control">
-          <input type="text" placeholder="Add a task..." name="add-item" id="add-item" className="item-input input input-bordered text-white ml-10 md:ml-0 md:w-96" onChange={(e) => setNewTask(e.target.value)} value={newTask} />
+          <input type="text" placeholder="Add a task..." name="add-item" id="add-item" className="item-input input input-bordered text-white ml-0 md:ml-10 w-1/2" onChange={(e) => setNewTask(e.target.value)} value={newTask} />
       </div>
-      <button type='submit' className="btn btn-square ml-2 mr-10 md:mr-0">
+      <button type='submit' className="btn btn-square w-2/3 mt-5 md:w-[50px] md:mt-0 md:ml-2 md:mr-10">
           <Icon path={mdiPlusCircleOutline} size={1} />
       </button>
     </form>

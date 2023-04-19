@@ -10,7 +10,7 @@ const Task = ({ task }) => {
     let name = task.name
 
     return (
-        <div className='item-card card justify-self-center mt-3 bg-zinc-800'>
+        <div className=' card justify-self-center mt-3 bg-zinc-800'>
             <div className="flex flex-row justify-end">
                 {/* <div className="card-title text-white p-5 pl-10">Item 1</div> */}
                 <Icon path={mdiPencilCircleOutline} size='37px' color='#f4f4f4' className='edit-button btn btn-sm btn-circle hover:bg-success mr-3 mt-2.5' onClick={() => editTask(task)} />

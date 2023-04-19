@@ -2,7 +2,7 @@ import Tasks from "./Tasks"
 
 const TaskContainer = () => {
   return (
-    <section className="min-h-full mb-5 border-2 border-solid border-rose-500 min-w-[380px] min-h-[205px]" >
+    <section className="min-w-[375px] min-h-[270px] md:min-h-[335px]" >
         <Tasks />
     </section>
   )

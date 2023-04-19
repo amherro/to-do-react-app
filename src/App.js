@@ -10,7 +10,7 @@ function App() {
     <TaskProvider>
       <div className="App">
         <Header />
-        <main className="min-height-full mb-5">
+        <main>
           <ItemInput />
           <div className="grid grid-cols-3 justify-items-center">
             <SearchArea />
