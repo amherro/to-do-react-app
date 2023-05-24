@@ -2,6 +2,7 @@ import {createContext, useState} from 'react'
 
 export const TaskContext = createContext({
     tasks: [],
+    getTasks: () => {},
     addTask: () => {},
     deleteTask: () => {}, 
     editTask: () => {},
@@ -14,6 +15,17 @@ export const TaskProvider = ({children}) => {
         item: {},
         edit: false
     })
+
+    // Get tasks from local storage
+    // const getTasks = () => {
+    //     console.log(localStorage.length)
+    //     if(localStorage.length > 0) {
+    //         for(let i = 0; i < tasks.length; i++) {
+    //             addTask(localStorage.getItem(tasks[i]))
+    //             console.log(tasks)
+    //         }
+    //     }
+    // }
 
     // Add a task
     const addTask = (task) => {
@@ -42,6 +54,7 @@ export const TaskProvider = ({children}) => {
     const contextValue = {
         tasks,
         taskEdit,
+        // getTasks,
         addTask,
         deleteTask, 
         editTask,

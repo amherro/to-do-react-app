@@ -1,5 +1,5 @@
 import { TaskContext } from '../TaskContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Icon from '@mdi/react';
 import { mdiPencilCircleOutline } from '@mdi/js';
 
@@ -8,6 +8,9 @@ const Task = ({ task }) => {
 
     let id = task.id
     let name = task.name
+
+    useEffect(() => localStorage.setItem(task.id, JSON.stringify(task)), [task])
+    
 
     return (
         <div className=' card justify-self-center mt-3 bg-zinc-800'>
