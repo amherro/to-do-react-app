@@ -16,8 +16,12 @@ const ItemInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(newTask === '' || newTask === null) {
+      return
+    }
     if(taskEdit.edit === true) {
       updateTask(taskEdit.task.id, newTask)
+      taskEdit.edit = false
     } else {
       addTask(newTask)
     }

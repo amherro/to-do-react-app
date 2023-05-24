@@ -4,32 +4,21 @@ export const TaskContext = createContext({
     tasks: [],
     getTasks: () => {},
     addTask: () => {},
+    addFromStorage: () => {},
     deleteTask: () => {}, 
     editTask: () => {},
     updateTask: () => {}
 })
 
 export const TaskProvider = ({children}) => {
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
     const [taskEdit, setTaskEdit] = useState({
         item: {},
         edit: false
     })
-
-    // Get tasks from local storage
-    // const getTasks = () => {
-    //     console.log(localStorage.length)
-    //     if(localStorage.length > 0) {
-    //         for(let i = 0; i < tasks.length; i++) {
-    //             addTask(localStorage.getItem(tasks[i]))
-    //             console.log(tasks)
-    //         }
-    //     }
-    // }
-
     // Add a task
     const addTask = (task) => {
-        setTasks([...tasks, {id: crypto.randomUUID(), name: task}])
+        setTasks([{id: crypto.randomUUID(), name: task}, ...tasks])
     }
 
     // Delete task

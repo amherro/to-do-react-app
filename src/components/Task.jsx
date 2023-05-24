@@ -1,5 +1,5 @@
 import { TaskContext } from '../TaskContext';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import Icon from '@mdi/react';
 import { mdiPencilCircleOutline } from '@mdi/js';
 
@@ -9,7 +9,7 @@ const Task = ({ task }) => {
     let id = task.id
     let name = task.name
 
-    useEffect(() => localStorage.setItem(task.id, JSON.stringify(task)), [task])
+    // useEffect(() => localStorage.setItem("Tasks", JSON.stringify(task)), [task])
     
 
     return (
