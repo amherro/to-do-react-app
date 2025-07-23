@@ -4,11 +4,9 @@ import Task from './Task'
 
 const Tasks = () => {
   const {tasks} = useContext(TaskContext)
-  // console.log(tasks)
 
   JSON.parse(localStorage.getItem('Tasks'))
 
-  console.log(tasks)
   useEffect(() => {
     JSON.parse(localStorage.getItem('Tasks'))
   }, [])

@@ -6,6 +6,7 @@ export const TaskContext = createContext({
     addTask: () => {},
     addFromStorage: () => {},
     deleteTask: () => {}, 
+    completeTask: () => {},
     editTask: () => {},
     updateTask: () => {}
 })
@@ -14,16 +15,22 @@ export const TaskProvider = ({children}) => {
     const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('Tasks')) || [])
     const [taskEdit, setTaskEdit] = useState({
         item: {},
-        edit: false
+        edit: false,
     })
     // Add a task
     const addTask = (task) => {
-        setTasks([{id: crypto.randomUUID(), name: task}, ...tasks])
+        setTasks([{id: crypto.randomUUID(), name: task, completed: false}, ...tasks])
     }
 
     // Delete task
     const deleteTask = (id) => {
         setTasks(tasks.filter((task) => task.id !== id))
+    }
+
+    // Mark task as Completed
+    const completeTask = (id) => {
+        setTasks(tasks.map((task) => task.id === id ? {...task, completed: !task.completed} : task))
+        console.log('completed')
     }
 
     // Set task to be updated
@@ -46,6 +53,7 @@ export const TaskProvider = ({children}) => {
         // getTasks,
         addTask,
         deleteTask, 
+        completeTask,
         editTask,
         updateTask
     }
