@@ -30,7 +30,7 @@ export const TaskProvider = ({children}) => {
     // Mark task as Completed
     const completeTask = (id) => {
         setTasks(tasks.map((task) => task.id === id ? {...task, completed: !task.completed} : task))
-        console.log('completed')
+        
     }
 
     // Set task to be updated
