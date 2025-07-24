@@ -18,19 +18,10 @@ const Task = ({ task }) => {
     >
       <div className="flex flex-row justify-end">
         <Icon
-          path={mdiPencilCircleOutline}
-          size="37px"
-          color="#f4f4f4"
-          className={`edit-button btn btn-sm btn-circle hover:bg-success mr-3 mt-2.5 ${
-            task.completed ? 'opacity-0 w-0' : 'opacity-100 w-100'
-          }`}
-          onClick={() => editTask(task)}
-        />
-        <Icon
           path={mdiCheckCircleOutline}
           size="37px"
           color="#f4f4f4"
-          className="edit-button btn btn-sm btn-circle mr-3 mt-2.5"
+          className="edit-button btn btn-sm btn-circle mr-3 mt-2.5 hover:bg-success"
           onClick={() => {
             completeTask(id);
             !task.completed &&
@@ -45,6 +36,17 @@ const Task = ({ task }) => {
                 theme: 'dark',
               });
           }}
+        />
+        <Icon
+          path={mdiPencilCircleOutline}
+          size="37px"
+          color="#f4f4f4"
+          className={`edit-button btn btn-sm btn-circle hover:bg-slate-500 mr-3 mt-2.5 ${
+            task.completed
+              ? 'opacity-0 w-0 absolute -z-10'
+              : 'opacity-100 w-100 z-100'
+          }`}
+          onClick={() => editTask(task)}
         />
         <button
           className="btn btn-circle btn-sm text-white bg-red-500 hover:bg-slate-500 mt-3 mr-4"
