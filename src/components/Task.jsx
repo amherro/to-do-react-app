@@ -55,7 +55,7 @@ const Task = ({ task }) => {
           X
         </button>
       </div>
-      <div className="card-body text-white p-5 pt-0 pb-10 pl-10">{name}</div>
+      <div className="card-body text-white p-5 pt-10 pb-20 pl-10">{name}</div>
     </div>
   );
 };
