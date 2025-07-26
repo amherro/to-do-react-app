@@ -25,7 +25,7 @@ const Task = ({ task }) => {
           onClick={() => {
             completeTask(id);
             !task.completed &&
-              toast('Task Completed', {
+              toast.success('Task Completed', {
                 position: 'top-right',
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -52,7 +52,7 @@ const Task = ({ task }) => {
           className="btn btn-circle btn-sm text-white bg-red-500 hover:bg-slate-500 mt-3 mr-4"
           onClick={() => {
             deleteTask(id);
-            toast('Task Deleted', {
+            toast.info('Task Deleted', {
               position: 'top-right',
               autoClose: 5000,
               hideProgressBar: false,

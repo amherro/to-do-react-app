@@ -18,6 +18,16 @@ const ItemInput = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTask === '' || newTask === null) {
+      toast.error('Error: Please type something...', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      });
       return;
     }
     if (taskEdit.edit === true) {
@@ -28,7 +38,7 @@ const ItemInput = () => {
     }
     setNewTask('');
 
-    toast('Task Added to Board', {
+    toast.success('Task Added to Board', {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
