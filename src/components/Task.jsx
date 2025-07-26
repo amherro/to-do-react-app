@@ -12,7 +12,7 @@ const Task = ({ task }) => {
 
   return (
     <div
-      className={`card justify-self-center mt-3 bg-zinc-800 w-full ${
+      className={`card mt-3 bg-zinc-800 h-auto w-full md:w-[480px] max-w-[480px] ${
         task.completed && 'opacity-25'
       }`}
     >
@@ -25,7 +25,7 @@ const Task = ({ task }) => {
           onClick={() => {
             completeTask(id);
             !task.completed &&
-              toast('Task Completed!', {
+              toast('Task Completed', {
                 position: 'top-right',
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -50,12 +50,24 @@ const Task = ({ task }) => {
         />
         <button
           className="btn btn-circle btn-sm text-white bg-red-500 hover:bg-slate-500 mt-3 mr-4"
-          onClick={() => deleteTask(id)}
+          onClick={() => {
+            deleteTask(id);
+            toast('Task Deleted', {
+              position: 'top-right',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: 'dark',
+            });
+          }}
         >
           X
         </button>
       </div>
-      <div className="card-body text-white p-5 pt-10 pb-20 pl-10">{name}</div>
+      <p className="card-body text-white p-5 pt-10 pb-20 pl-10">{name}</p>
     </div>
   );
 };
